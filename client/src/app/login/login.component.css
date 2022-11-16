@@ -1,0 +1,22 @@
+.btn-primary{
+    background-color: #00B074;
+}
+.image {
+    background-image: url("../../assets/img/job.png");
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+  }
+  .text-green{
+    color: #00B074;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .txt{
+    font-size: 15px;
+  }
+a{
+    text-decoration: none;
+    color: #00B074;
+    font-size: 15px;
+    font-weight: bold;
+}
