@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path")
+
 
 const auth = require("./routes/api/auth");
 const users = require("./routes/api/users");
@@ -24,7 +26,7 @@ app.use("/api/auth", auth);
 app.use("/api/users", users);
 app.use("/api/offre", offre);
 
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const port = process.env.PORT || 5000;
 

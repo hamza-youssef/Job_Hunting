@@ -14,6 +14,10 @@ const OffreSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  image: {
+    type: String,
+    // default: ,
+  },
 });
 
 module.exports = Offre = mongoose.model("offre", OffreSchema);

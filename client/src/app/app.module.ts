@@ -19,6 +19,9 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from 'src/auth/auth-interceptor';
 import { AuthJobListComponent } from './auth-job-list/auth-job-list.component';
+import { HomeCompanyComponent } from './home-company/home-company.component';
+import { AddOffreComponent } from './add-offre/add-offre.component';
+import { EditOffreComponent } from './edit-offre/edit-offre.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { AuthJobListComponent } from './auth-job-list/auth-job-list.component';
     PageNotFoundComponent,
     LoginComponent,
     SignupComponent,
-    AuthJobListComponent
+    AuthJobListComponent,
+    HomeCompanyComponent,
+    AddOffreComponent,
+    EditOffreComponent
   ],
   imports: [
     BrowserModule,

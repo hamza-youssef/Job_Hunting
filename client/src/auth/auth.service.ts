@@ -10,9 +10,9 @@ export class AuthService {
   private isAuthenticated = false;
   private token: string="";
   private tokenTimer: any;
-  private user: string = "";
-  private role: string ="";
+
   private authStatusListener = new Subject<boolean>();
+
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -29,43 +29,47 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(name: string,email: string, password: string) {
-    const authData: RegData = { name:name, email: email, password: password };
+  createUser(name: string,email: string, password: string , role:string) {
+    const authData: RegData = { name:name, email: email, password: password , role: role };
+
     this.http
       .post("http://localhost:5000/api/users/", authData)
       .subscribe(response => {
+
 
         this.router.navigate(["/"]);
       });
   }
 
-  login(email: string, password: string     ) {
+  login(email: string, password: string  ) {
     const authData: AuthData = { email: email, password: password  };
 
     this.http
-      .post<{ token: string; expiresIn: number; user: string ; role:string  }>(
+      .post<{ token: string; expiresIn: number; user: object }>(
         "http://localhost:5000/api/auth",
         authData
       )
       .subscribe(response => {
         const token = response.token;
         this.token = token;
-        const user = response.user
-        this.user = user
-        // const role = response.user
-        // this.role = role;
-
+        const user = Object.create(response.user)
+        
+        
         if (token) {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           console.log("Response is " ,response);
-          console.log( response.user)
+          console.log(user.role)
+
+
           this.saveAuthData(token)
 
-
-          this.router.navigate(["/testimonial"])
+          if(user.role == "user")
+          this.router.navigate(["/authjoblist"])
+          else 
+          this.router.navigate(["/homecompany"])
         }
       });
   }
@@ -116,7 +120,7 @@ export class AuthService {
     const token = localStorage.getItem("token");
     const expirationDate = localStorage.getItem("expiration");
     if (!token || !expirationDate) {
-      return;
+      return null;
     }
     return {
       token: token,

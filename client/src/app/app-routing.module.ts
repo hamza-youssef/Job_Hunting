@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AddOffreComponent } from './add-offre/add-offre.component';
 import { AuthJobListComponent } from './auth-job-list/auth-job-list.component';
 import { CategoryComponent } from './category/category.component';
 import { ContactComponent } from './contact/contact.component';
+import { EditOffreComponent } from './edit-offre/edit-offre.component';
+import { HomeCompanyComponent } from './home-company/home-company.component';
 import { HomeComponent } from './home/home.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { JobListComponent } from './job-list/job-list.component';
@@ -25,6 +28,13 @@ const routes: Routes = [
   {path:"contact",component:ContactComponent},
   {path:"login",component:LoginComponent},
   {path:"signup",component:SignupComponent},
+  {path:"homecompany",component:HomeCompanyComponent},
+  {path:"addroute",component:AddOffreComponent},
+  {path:"editoffre/:postId",component:EditOffreComponent},
+
+
+
+
 
 
 
